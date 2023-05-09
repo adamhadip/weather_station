@@ -2,15 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import requests
-import psycopg2
-
-# model = joblib.load('/weather_station/models/model.pkl')
-
-# def predict_hujan(hujan,kelembabpan,tekanan_udara,temperature,tingkat_cahaya):
-#     input_data = pd.DataFrame([[hujan,kelembabpan,tekanan_udara,temperature,tingkat_cahaya]],
-#                               columns=['hujan','kelembabpan','tekanan_udara','temperature','tingkat_cahaya'])
-#     prediction = model.predict(input_data)
-#     return prediction[0]
+# import psycopg2
 col1, col2 = st.columns(2)
 col2.error("""
 Adam Hadi Pratama 
@@ -18,19 +10,19 @@ Adam Hadi Pratama
 Data Enthusiast
 Universitas Telkom
 """)
-POSTGRES_USER = "postgres"
-POSTGRES_PASSWORD = "adamdvimprez7"
-POSTGRES_SERVER = "localhost"
-POSTGRES_PORT = "5432"
-POSTGRES_DB = "weather_station"
+# POSTGRES_USER = "postgres"
+# POSTGRES_PASSWORD = "adamdvimprez7"
+# POSTGRES_SERVER = "localhost"
+# POSTGRES_PORT = "5432"
+# POSTGRES_DB = "weather_station"
 
-conn = psycopg2.connect(
-    host=POSTGRES_SERVER,
-    port=POSTGRES_PORT,
-    dbname=POSTGRES_DB,
-    user=POSTGRES_USER,
-    password=POSTGRES_PASSWORD
-)
+# conn = psycopg2.connect(
+#     host=POSTGRES_SERVER,
+#     port=POSTGRES_PORT,
+#     dbname=POSTGRES_DB,
+#     user=POSTGRES_USER,
+#     password=POSTGRES_PASSWORD
+# )
 
 st.title('Weather Station')
 st.header('Mau prediksi cuaca hari ini?')

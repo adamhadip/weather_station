@@ -1,0 +1,18 @@
+data_raw: /weather_station/src/dataweatherstation.csv
+#tipe_data
+datetime_cols : 
+- tanggal
+float_columns:
+- tekanan_udara
+int_cols: 
+- hujan
+- kelembabpan
+- temperature
+- tingkat_cahaya
+target : keterangan 
+predictors: 
+- hujan
+- kelembabpan 
+- tekanan_udara
+- temperature 
+- tingkat_cahaya

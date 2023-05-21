@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import requests
-# import psycopg2
+import psycopg2
 col1, col2 = st.columns(2)
 col2.error("""
 Adam Hadi Pratama 
@@ -10,19 +10,20 @@ Adam Hadi Pratama
 Data Enthusiast
 Universitas Telkom
 """)
-# POSTGRES_USER = "postgres"
-# POSTGRES_PASSWORD = "adamdvimprez7"
-# POSTGRES_SERVER = "localhost"
-# POSTGRES_PORT = "5432"
-# POSTGRES_DB = "weather_station"
 
-# conn = psycopg2.connect(
-#     host=POSTGRES_SERVER,
-#     port=POSTGRES_PORT,
-#     dbname=POSTGRES_DB,
-#     user=POSTGRES_USER,
-#     password=POSTGRES_PASSWORD
-# )
+POSTGRES_USER = "postgres"
+POSTGRES_PASSWORD = "adamdvimprez7"
+POSTGRES_SERVER = "localhost"
+POSTGRES_PORT = "5432"
+POSTGRES_DB = "weather_station"
+
+conn = psycopg2.connect(
+    host=POSTGRES_SERVER,
+    port=POSTGRES_PORT,
+    dbname=POSTGRES_DB,
+    user=POSTGRES_USER,
+    password=POSTGRES_PASSWORD
+)
 
 st.title('Weather Station')
 st.header('Mau prediksi cuaca hari ini?')
@@ -53,8 +54,14 @@ if st.button('Predict'):
         st.write('Cuaca Hari ini gerimis')
     else: 
         st.write('Cuaca Hari ini Hujan Deras')
-    # cun = conn.cursor()
-    # sql = """INSERT INTO weather (hujan,kelembabpan,tekanan_udara,temperature,tingkat_cahaya,keterangan) VALUES (%s,%s,%s,%s,%s,%s)"""
-    # cun.execute(sql,(hujan,kelembabpan,tekanan_udara,temperature,tingkat_cahaya,keterangan))
-    # conn.commit()
-    # cun.close()
+    cun = conn.cursor()
+    sql = """INSERT INTO weather (hujan,kelembabpan,tekanan_udara,temperature,tingkat_cahaya,keterangan) VALUES (%s,%s,%s,%s,%s,%s)"""
+    cun.execute(sql,(hujan,kelembabpan,tekanan_udara,temperature,tingkat_cahaya,keterangan))
+    conn.commit()
+    cun.close()
+    
+    
+# MASALAH YANG PERTAMA ADALAH 
+# - HOSTING LOCAL HOST PREDICT 
+# - HOSTING SQL BIAR BISA DIAMBIL 
+# - BISA DISKUSIKAN DENGAN ANAK FE DAN BE
